@@ -8,16 +8,31 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-  }
+  }*/
   
-  .hero-text {
+  /* .hero-text {
     text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-  } */
+  }  */
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    background-image: url("onepunchman.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+   }
+  
+   .hero-image .hero-text {
+    display: block;
+    visibility: hidden;
+    height: auto;
+    width: 100%;
+   }
 
   .navbar { 
     display: flex;
@@ -53,23 +68,79 @@
 
 #contenedor{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
 }
 
-#formulario{
-    grid-row: 1/2;
-}
+
 
 #video{
     grid-row: 2/3;
 }
 
 #productos{
-    grid-row:3/4;
+    grid-row:1/2;
 }
 
+#productos>div{
+    width: fit-content;
+    border:solid;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: rgba(255,0,0,0.3);
+
+}
+
+#productos p{  
+    transition: .6s ease;
+    margin:auto;
+    align-self: center;
+    opacity: 0;
+    position: absolute;
+    background-color: azure;
+    padding:5px 10px;
+    font-weight: bold;
+    border:solid 1px ;
+    box-shadow: 4px 0px 10px aliceblue,-4px 0px 10px aliceblue,0px 4px 10px aliceblue,0px -4px 10px aliceblue;
+
+} 
+
+#productos div:hover p{
+    opacity: 1;
+    z-index: 2;
+}
+
+#productos div:hover img{
+    filter:blur(5px)
+    opacity(0.80)
+} 
+
 #testimonios{
+    grid-row: 3/4;
+}
+
+#formulario{
     grid-row: 4/5;
+    
+}
+
+input[type=text],input[type=email], select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 /* @media screen and (min-width: 556px) and (max-width: 768px){

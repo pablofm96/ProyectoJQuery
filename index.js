@@ -59,23 +59,23 @@ $("input#fechaNacimiento").keydown(function(){
 
 })
 
+$("#toTop").click(function () {
+    $("html, body").animate({scrollTop: 0}, 1000);
+ });
+
 
 function recogerTestimonios(){
-    let aleatorio = Math.floor(Math.random() * 6);
     $.ajax({
         dataType: "json",
         url: "testimonios.json",
         data: "data",
         success: function(response){
-            for (let i=1; i<=3; i++){
-                let aleatorio = Math.floor(Math.random() * 7);
-                $("div#testimonio"+i.toString()).text(response.testimonios[aleatorio].nombre);
+            for (let i=0; i<3; i++){
+                let aleatorio = Math.floor(Math.random() * 6);
+                $("label#nombre"+i.toString()).text(response.testimonios[aleatorio].nombre);
+                $("p#texto"+i.toString()).text(response.testimonios[aleatorio].texto);
+                
             }
-            // $("div#testimonio1").text(response.testimonios[aleatorio].nombre);
-            // aleatorio = Math.floor(Math.random() * 6);
-            // $("div#testimonio2").text(response.testimonios[aleatorio].nombre);
-            // aleatorio = Math.floor(Math.random() * 6);
-            // $("div#testimonio3").text(response.testimonios[aleatorio].nombre);
         }
     })
     setTimeout(recogerTestimonios, 10000);
@@ -88,8 +88,8 @@ function recogerProductos(){
         data: "data",
         success: function(response){
             for (let i=0; i<3; i++){
-                $("h2#producto"+i.toString()).text(response.productos[i].nombre);
-                $("div#imagen"+i.toString()).prepend('<img id="imagen1" src="'+response.productos[i].imagen+'"/>');
+                $("p#producto"+i.toString()).text(response.productos[i].nombre);
+                $("div#imagen"+i.toString()).prepend(`<img id="imagen1" src="${response.productos[i].imagen}" alt="${response.productos[i].nombre}"/>`);
             }
         }
     })
