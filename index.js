@@ -60,45 +60,40 @@ $("input#fechaNacimiento").keydown(function(){
 })
 
 
+function recogerTestimonios(){
+    let aleatorio = Math.floor(Math.random() * 6);
+    $.ajax({
+        dataType: "json",
+        url: "testimonios.json",
+        data: "data",
+        success: function(response){
+            for (let i=1; i<=3; i++){
+                let aleatorio = Math.floor(Math.random() * 7);
+                $("div#testimonio"+i.toString()).text(response.testimonios[aleatorio].nombre);
+            }
+            // $("div#testimonio1").text(response.testimonios[aleatorio].nombre);
+            // aleatorio = Math.floor(Math.random() * 6);
+            // $("div#testimonio2").text(response.testimonios[aleatorio].nombre);
+            // aleatorio = Math.floor(Math.random() * 6);
+            // $("div#testimonio3").text(response.testimonios[aleatorio].nombre);
+        }
+    })
+    setTimeout(recogerTestimonios, 10000);
+}
 
-var animes = {"array": [
-    { "producto": "Naruto", "tipo": "shonen", "imagen": "naruto1.jpg" },
-    {"producto": "One punch man", "tipo": "shonen", "imagen": "onepunchaman1.jpg"},
-    {"producto" : "Attack on titan", "tipo": "shonen", "imagen": "attackontitan.jpg"}
-]};
-    
-    var animes2 = JSON.stringify(animes);
-    
-    localStorage.setItem("series", animes2)
-    
-    let serie = JSON.parse(localStorage.getItem("series"));
-    
-    
-    //console.log(JSON.parse(series));
-    
-    console.log(serie.array[0].producto);
-    
-    $("#imagen1 h2").html(serie.array[0].producto);
-    $('div#imagen1').prepend('<img id="imagen1" src="naruto1.jpg" alt="naruto" />');
+function recogerProductos(){
+    $.ajax({
+        dataType: "json",
+        url: "productos.json",
+        data: "data",
+        success: function(response){
+            for (let i=0; i<3; i++){
+                $("h2#producto"+i.toString()).text(response.productos[i].nombre);
+                $("div#imagen"+i.toString()).prepend('<img id="imagen1" src="'+response.productos[i].imagen+'"/>');
+            }
+        }
+    })
+}
 
-    $("#imagen2 h2").html(serie.array[1].producto);
-    $('div#imagen2').prepend('<img id="imagen1" src="onepunchman1.jpg" alt="onepunchman" />');
-
-    $("#imagen3 h2").html(serie.array[2].producto);
-    $('div#imagen3').prepend('<img id="imagen1" src="attackontitan.jpg" alt="attackontitan" />');
-
-var testimonios = {"testimonio": [
-    { "nombre": "Pepe", "texto": "La mejor pagina web para ver anime en España"},
-    { "nombre": "Antonio", "texto": "Tiene todos los animes que busco a un precio bastante asequible"},
-    { "nombre": "Jose Carlos", "texto": "Que rico un 10"},
-]}
-
-
-var testimonios2 = JSON.stringify(testimonios);
-
-localStorage.setItem("testimonios", testimonios2);
-
-let testimonios3 = JSON.parse(localStorage.getItem("testimonios"));
-
-
-console.log(testimonios3.testimonio[0].nombre);
+recogerProductos();
+recogerTestimonios();
