@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -14,14 +16,15 @@
             <button>Suscribete</button>
         </nav>
     </header>
-    <div class="hero-image">
-        <div class="hero-text">
-            <img src='onepunchman1.jpg'>
-          <!-- <h1>AnimeEspaña</h1>
-          <p>Las mejores series de anime en español</p> -->
-        </div>
-      </div>
+   
     <div id="contenedor">
+        <div id="hero">
+            <label id="texto-hero1"> Anime España</label>
+            <label id="texto-hero2"> Tu página para ver anime</label>
+            <div id="imagenHero">
+              <img src="onepunchman.jpg">
+            </div>
+        </div>
         <div id="formulario">
             <form>
                 <label for="nombre">Nombre</label>
@@ -42,11 +45,8 @@
                 <input type="submit" value="Enviar" id="enviar" disabled>
             </form>
         </div>
-        <div id=video>
-            <video autoplay muted loop id="myVideo">
-                <source src="Attack On Titan_ Trailer.mp4" type="video/mp4">
-              </video>
-        </div>
+        
+
         <div id="productos">
             <div id="imagen0">
                 <p id="producto0"></p>
@@ -58,6 +58,14 @@
                 <p id="producto2"></p>
             </div> 
         </div>
+
+        <div id="testimonio-video">
+            <div id=video>
+                <video autoplay muted loop id="myVideo">
+                    <source src="Attack On Titan_ Trailer.mp4" type="video/mp4">
+                  </video>
+            </div>
+
         <div id="testimonios">
             <div id="testimonio0">
                 <label id="nombre0"></label>
@@ -72,7 +80,19 @@
                 <p id="texto2"></p>
             </div>
         </div>
+        </div>
     </div>
     <script src="index.js"></script>
 </body>
+<footer>
+    <div class="footerinfo">
+        <label>
+          Pablo Ferres Maldonado
+        </label>
+        <svg viewBox="0 -20 700 110" width="100%" height="110" preserveAspectRatio="none">
+            <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700" fill="#CEB964" />
+            <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#E6E7E9" />
+          </svg>
+    </div>
+</footer>
 </html>
