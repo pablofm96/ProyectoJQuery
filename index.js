@@ -1,3 +1,5 @@
+/* Formulario */
+
 $("input#nombre").keydown(function(){
 
     if(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/.test($(this).val()) && $(this).val() !== ""){
@@ -59,10 +61,7 @@ $("input#fechaNacimiento").keydown(function(){
 
 })
 
-$("#toTop").click(function () {
-    $("html, body").animate({scrollTop: 0}, 1000);
- });
-
+/* Recoger Testimonios */
 
 function recogerTestimonios(){
     $.ajax({
@@ -81,6 +80,8 @@ function recogerTestimonios(){
     setTimeout(recogerTestimonios, 10000);
 }
 
+/* Recoger productos */
+
 function recogerProductos(){
     $.ajax({
         dataType: "json",
@@ -91,9 +92,65 @@ function recogerProductos(){
                 $("p#producto"+i.toString()).text(response.productos[i].nombre);
                 $("div#imagen"+i.toString()).prepend(`<img id="imagen1" src="${response.productos[i].imagen}" alt="${response.productos[i].nombre}"/>`);
             }
+        },
+        error: function(){
+            console.log("Error al obtener los productos");
+            setTimeout(recogerProductos, 5000);
         }
     })
 }
 
+/* Obtener localizacion */
+
+function obtenerCoordenaadas(){
+    if ("geolocation" in navigator){
+        navigator.geolocation.getCurrentPosition(function(position){ 
+            console.log("Tu localizacion es: \nLatitud : "+position.coords.latitude+". \nLongitud : "+ position.coords.longitude);
+            });
+    }else{
+        console.log("Error al obtener la localización");
+    }
+}
+
+/* Scroll hacia arriba */
+function botonArriba(){
+    $(document).ready(function(){
+        
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 100) {
+                $('#botonArriba').fadeIn();
+            } else {
+                $('#botonArriba').fadeOut();
+            }
+        });
+        
+        $('#botonArriba').click(function(){
+            $('html, body').animate({scrollTop : 0},600);
+            return false;
+        });
+        
+    });
+}
+
+
+function cambiarVista(){
+    var lista = false;
+
+    $( "#botonCambiarVista" ).click(function() {
+    lista=!lista;
+    if(lista){
+        $("#testimonios").css("display","flex");
+    }
+    else{ 
+        $("#testimonios").css("display","grid");
+    }
+    }); 
+}
+
+
+/* Llamada a funciones */
+botonArriba();
+cambiarVista();
+obtenerCoordenaadas();
 recogerProductos();
 recogerTestimonios();
