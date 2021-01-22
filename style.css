@@ -147,7 +147,7 @@
 }
 
 #productos.animate div {
-    animation: animation 3.5s forwards;
+    animation: animation 2.5s forwards;
 }
 
 #testimonios div {
@@ -156,7 +156,7 @@
 
 
 #testimonios.animate div {
-    animation: animation 1.5s forwards;
+    animation: animation 2.5s forwards;
 }
 
 
