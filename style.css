@@ -134,6 +134,30 @@
     opacity(0.80)
 } 
 
+/* Animación productos y testimonios */
+
+#productos div {
+    opacity: 0;
+}
+
+@keyframes animation {
+    100% {
+      opacity: 1;
+    }
+}
+
+#productos.animate div {
+    animation: animation 3.5s forwards;
+}
+
+#testimonios div {
+    opacity: 0;
+}
+
+
+#testimonios.animate div {
+    animation: animation 1.5s forwards;
+}
 
 
 /* Formulario */

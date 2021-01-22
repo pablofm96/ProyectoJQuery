@@ -132,6 +132,33 @@ function botonArriba(){
     });
 }
 
+/* Animacion de los productos al hacer scroll */
+function animacionProductos(){
+    document.addEventListener('scroll', function (e) {
+        var top  = window.pageYOffset + window.innerHeight,
+            isVisible = top > document.querySelector('#productos > div').offsetTop;
+             
+         if (isVisible) {
+           document.getElementById('productos').classList.add('animate');
+        }
+    });
+}
+
+/* Animacion de los testimonios al hacer scroll */
+function animacionTestimonios(){
+    document.addEventListener('scroll', function (e) {
+        var top  = window.pageYOffset + window.innerHeight,
+            isVisible = top > document.querySelector('#testimonios > div').offsetTop;
+             
+         if (isVisible) {
+           document.getElementById('testimonios').classList.add('animate');
+        }
+    });
+     
+}
+
+
+/* Cambiar la vista */
 
 function cambiarVista(){
     var lista = false;
@@ -149,6 +176,8 @@ function cambiarVista(){
 
 
 /* Llamada a funciones */
+animacionProductos();
+animacionTestimonios();
 botonArriba();
 cambiarVista();
 obtenerCoordenaadas();
